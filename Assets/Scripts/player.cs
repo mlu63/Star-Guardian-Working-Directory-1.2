@@ -12,6 +12,8 @@ public class player : MonoBehaviour
     public GUIText highScoreText;
     public Sprite goodStar;
     public Sprite badStar;
+    public ParticleSystem goodParticle;
+    public ParticleSystem badParticle;
 
     private float lastUpdate = 1;
     private float timeOfLevel = 60;
@@ -121,9 +123,15 @@ void flip()
         {
             //Destroy star
             Destroy(col.gameObject);
+
+            //Instantiate particle effect
+
+
             //If the star is a good star
             if (col.gameObject.GetComponent<SpriteRenderer>().sprite ==  goodStar)
             {
+				ParticleSystem particles = Instantiate(goodParticle, col.transform.position, Quaternion.identity) as ParticleSystem;
+
                 source.PlayOneShot(goodStarAudio, 5);
                 //Add 1 to score
                 score = score + 1;
@@ -150,6 +158,8 @@ void flip()
             //If the player hits a bad star
             if (col.gameObject.GetComponent<SpriteRenderer>().sprite == badStar)
             {
+				ParticleSystem particles = Instantiate(badParticle, col.transform.position, Quaternion.identity) as ParticleSystem;
+
                 source.PlayOneShot(badStarAudio, 5);
                 //Take away 1 fuel from user if there is 1 fuel left, else if there is less then 1 left
                 //set fuel to 0 to avoid the bar going to far down
