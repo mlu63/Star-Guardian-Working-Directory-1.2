@@ -18,10 +18,10 @@ public class ProgressBar : MonoBehaviour
         //Progresses the progression person across the progression bar from left to right
         if (Time.time > nextSpawn)
         {
-            Debug.Log(nextSpawn);
+            //Debug.Log(nextSpawn);
             nextSpawn += spawnRate;
             //Pretty much 60 seconds to complete the level
-            transform.Translate(Vector2.right * 9f * Time.deltaTime);
+            transform.Translate(Vector2.right * 4f * Time.deltaTime);
         }
     }
 }

@@ -20,6 +20,10 @@ public class Spawn : MonoBehaviour {
 		if (Time.time > nextSpawn)
 		{
 			nextSpawn += spawnRate;
+            //This will increase the spawn speed slowly
+            spawnRate -= .006F;
+            //INSANE MODE!
+            //nextSpawn += nextSpawn;
 			//Spawn stars
 			//...
 			for (int i = 0; i < 5; i++)

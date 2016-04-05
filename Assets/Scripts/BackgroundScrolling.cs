@@ -18,7 +18,6 @@ public class BackgroundScrolling : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(nextSpawn);
         nextSpawn += spawnRate;
         //Pretty much 60 seconds to complete the level
         transform.Translate(Vector2.down * 2f * Time.deltaTime);
