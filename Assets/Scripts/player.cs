@@ -9,6 +9,7 @@ public class player : MonoBehaviour
     public float maxFuel = 30;
     public int score = 0;
     public GUIText scoreText;
+    public GUIText highScoreText;
     public Sprite goodStar;
     public Sprite badStar;
 
@@ -31,6 +32,16 @@ public class player : MonoBehaviour
         fuelTexture = new Texture2D(1, 1);
         fuelTexture.SetPixel(0, 0, Color.red);
         fuelTexture.Apply();
+
+		//Set high score to 0 on first run
+        if (!PlayerPrefs.HasKey("highScore"))
+        {
+        	PlayerPrefs.SetInt("highScore", 0);
+        }
+        else
+        {
+			highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+        }
     }
 
     // Update is called once per frame
@@ -118,6 +129,14 @@ void flip()
                 score = score + 1;
                 //Set score to reflect new score
                 scoreText.text = "Score: " + score;
+
+				//Update high score if achieved
+                if (score > PlayerPrefs.GetInt("highScore"))
+                {
+                	PlayerPrefs.SetInt("highScore", score);
+                	highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+                }
+
                 //If the player is not at max fuel, add to his fuel
                 if(fuel < (maxFuel-1))
                 {
