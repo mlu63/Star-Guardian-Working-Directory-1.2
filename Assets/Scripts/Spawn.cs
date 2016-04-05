@@ -4,7 +4,7 @@ using System.Collections;
 public class Spawn : MonoBehaviour {
 
 	public float spawnRate = 1.0F;
-    private float nextSpawn = 0.0F;
+    private float nextSpawn = 1.0F;
     public GameObject star;
     public float speed = 0.0f;
     private float[] xSpawnCoord = new float[5] {-2.666f, -1.333f, 0f, 1.333f, 2.666f};
@@ -20,8 +20,10 @@ public class Spawn : MonoBehaviour {
 		if (Time.time > nextSpawn)
 		{
 			nextSpawn += spawnRate;
+
             //This will increase the spawn speed slowly
             spawnRate -= .006F;
+
             //INSANE MODE!
             //nextSpawn += nextSpawn;
 			//Spawn stars
