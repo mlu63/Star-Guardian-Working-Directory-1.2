@@ -32,7 +32,7 @@ public class PauseScript : MonoBehaviour {
             {
                 SwitchPause();
             }
-        }
+        } 
 	}
 
     // Alter the timescale value and display/hide menu

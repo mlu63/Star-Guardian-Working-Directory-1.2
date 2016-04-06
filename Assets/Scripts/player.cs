@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class player : MonoBehaviour
@@ -24,26 +25,44 @@ public class player : MonoBehaviour
     public AudioClip badStarAudio;
     public AudioClip goodStarAudio;
     private AudioSource source;
+    
+    public float startTime = 0;
+
+    // end game stuff
+    public Canvas endGameScreen;
+    public Text scoreLabel;
+    public Text titleLabel;
 
     void Start()
     {
-        source = GetComponent<AudioSource>();
-        fuel = maxFuel;
+        // discover the end game objects and set them
+        scoreLabel = scoreLabel.GetComponent<Text>();
+        titleLabel = titleLabel.GetComponent<Text>();
+        endGameScreen = endGameScreen.GetComponent<Canvas>();
 
-        fuelRect = new Rect(Screen.width / 4.63F, Screen.height/ 1.2F, Screen.width / 22, Screen.height / 30);
-        fuelTexture = new Texture2D(1, 1);
-        fuelTexture.SetPixel(0, 0, Color.red);
-        fuelTexture.Apply();
-
-		//Set high score to 0 on first run
+        //Set high score to 0 on first run
         if (!PlayerPrefs.HasKey("highScore"))
         {
-        	PlayerPrefs.SetInt("highScore", 0);
+            PlayerPrefs.SetInt("highScore", 0);
         }
         else
         {
-			highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+            highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore");
         }
+        init();
+
+        source = GetComponent<AudioSource>();
+    }
+
+    public void init()
+    {
+        Time.timeScale = 1.0f;
+        fuel = maxFuel;
+
+        fuelRect = new Rect(Screen.width / 4.63F, Screen.height / 1.2F, Screen.width / 22, Screen.height / 30);
+        fuelTexture = new Texture2D(1, 1);
+        fuelTexture.SetPixel(0, 0, Color.red);
+        fuelTexture.Apply();
     }
 
     // Update is called once per frame
@@ -95,20 +114,18 @@ public class player : MonoBehaviour
         //Stop game if you have 0 fuel!
         if(fuel <= 0)
         {
-            GlobalControl.Instance.gameOver = true;
-            Time.timeScale = 0;
-        }
 
-        //Game stops after 60 seconds
-        if ((Time.time - 60f) >= 0)
+            Endgame(false);     // lose
+        }
+        if ((startTime + timeOfLevel <= Time.timeSinceLevelLoad))
         {
-            Time.timeScale = 0;
+            Endgame(true);      // win
         }
     }
 
 
-//Change direction player sprite is facing
-void flip()
+    //Change direction player sprite is facing
+    void flip()
 	{
 		facingRight = !facingRight;
 
@@ -174,6 +191,27 @@ void flip()
                 }
             }
         }
+    }
+
+    void Endgame(bool victory)
+    {
+        GlobalControl.Instance.gameOver = true;
+        Time.timeScale = 0.0f;
+        fuel = 0;
+
+        if (victory)
+        {
+            titleLabel.color = Color.green;
+            titleLabel.text = "level complete!";
+        }
+        else
+        {
+            titleLabel.color = Color.red;
+            titleLabel.text = "game over!";
+        }
+
+        scoreLabel.text = "your score: " + score.ToString();
+        endGameScreen.enabled = true;
     }
 
     //Drawing the fuelgauge
