@@ -49,7 +49,7 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update ()
 	{
-		if (Input.GetKey(KeyCode.RightArrow))
+		if (Input.GetKey(KeyCode.RightArrow) && Time.timeScale != 0.0f)
 		{
 			if (!facingRight)
 			{
@@ -61,7 +61,7 @@ public class player : MonoBehaviour
                 fuel = fuel - .01F;
             }
         }
-		else if (Input.GetKey(KeyCode.LeftArrow))
+		else if (Input.GetKey(KeyCode.LeftArrow) && Time.timeScale != 0.0f)
 		{
 			if (facingRight)
 			{
