@@ -95,6 +95,7 @@ public class player : MonoBehaviour
         //Stop game if you have 0 fuel!
         if(fuel <= 0)
         {
+            GlobalControl.Instance.gameOver = true;
             Time.timeScale = 0;
         }
 

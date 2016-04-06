@@ -22,13 +22,16 @@ public class PauseScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (isPaused)
-            PauseGame(true);
-        else
-            PauseGame(false);
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (!GlobalControl.Instance.gameOver)
         {
-            SwitchPause();
+            if (isPaused)
+                PauseGame(true);
+            else
+                PauseGame(false);
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SwitchPause();
+            }
         }
 	}
 

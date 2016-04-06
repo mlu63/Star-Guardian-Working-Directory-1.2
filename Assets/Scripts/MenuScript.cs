@@ -76,6 +76,9 @@ public class MenuScript : MonoBehaviour
             difficultyBtn.GetComponentInChildren<Text>().text = "set difficulty: easy";
         }
 
+        // game over is false, start new game
+        GlobalControl.Instance.gameOver = false;
+
         //musicEnabled = true;
         //isEasy = true;
     }

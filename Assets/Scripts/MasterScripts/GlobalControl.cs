@@ -6,12 +6,14 @@ public class GlobalControl : MonoBehaviour
     public static GlobalControl Instance;
     public bool isEasy;
     public bool musicOn;
+    public bool gameOver;
 
     // default values on launch
     void Start()
     {
         isEasy = true;
         musicOn = true;
+        gameOver = false;
     }
 
     void Awake()
