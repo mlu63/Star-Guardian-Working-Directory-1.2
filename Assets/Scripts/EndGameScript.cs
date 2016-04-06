@@ -1,6 +1,4 @@
-﻿// handles pause menu aspects
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
