@@ -17,7 +17,7 @@ public class Spawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Time.time > nextSpawn)
+		if (Time.timeSinceLevelLoad > nextSpawn)
 		{
 			nextSpawn += spawnRate;
 
