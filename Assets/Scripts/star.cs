@@ -11,6 +11,11 @@ public class star : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+        if (!GlobalControl.Instance.isEasy)
+        {
+            // hard is twice as difficult
+            goodStarFraction = 0.2f;
+        }
 		float seed = Random.Range(0.0f, 1.0f);
 		if (seed < goodStarFraction)
 		{

@@ -73,7 +73,7 @@ public class MenuScript : MonoBehaviour
         if (!isEasy)
         {
             // stuff here to handle level difficulty
-            difficultyBtn.GetComponentInChildren<Text>().text = "set difficulty: easy";
+            difficultyBtn.GetComponentInChildren<Text>().text = "difficulty: hard";
         }
 
         // game over is false, start new game
@@ -177,12 +177,12 @@ public class MenuScript : MonoBehaviour
         if (isEasy)
         {
             isEasy = false;
-            difficultyBtn.GetComponentInChildren<Text>().text = "set difficulty: easy";
+            difficultyBtn.GetComponentInChildren<Text>().text = "difficulty: hard";
         }
         else
         {
             isEasy = true;
-            difficultyBtn.GetComponentInChildren<Text>().text = "set difficulty: hard";
+            difficultyBtn.GetComponentInChildren<Text>().text = "difficulty: easy";
         }
     }
 
