@@ -59,7 +59,7 @@ public class player : MonoBehaviour
         Time.timeScale = 1.0f;
         fuel = maxFuel;
 
-        fuelRect = new Rect(Screen.width / 4.63F, Screen.height / 1.2F, Screen.width / 22, Screen.height / 30);
+        fuelRect = new Rect(Screen.width / 4.65F, Screen.height / 1.2F, Screen.width / 22, Screen.height / 30);
         fuelTexture = new Texture2D(1, 1);
         fuelTexture.SetPixel(0, 0, Color.red);
         fuelTexture.Apply();
