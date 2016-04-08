@@ -1,4 +1,4 @@
-# Working-Directory-1.2
+# Star Guardian
 
 StarGuardian is a game that was developed in collaboration with:
 
