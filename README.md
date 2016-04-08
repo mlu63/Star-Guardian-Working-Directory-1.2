@@ -3,7 +3,9 @@
 StarGuardian is a game that was developed in collaboration with:
 
 Kevin Tawatstjerna
+
 Justin Nicholls
+
 Alec White
 
 as part of a project for CS4483 at the University of Western Ontario (Game Design course). 
